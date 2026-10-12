@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>师金明 · 个人主页</title>
+  <meta name="description" content="杭州电子科技大学软件工程大一学生，正在学 C 语言和 AI。这里是我的自我介绍、成长轨迹和联系方式。" />
+  <meta name="author" content="师金明" />
+
+  <!-- ===== 分享到微信/QQ 时的卡片信息（改标题和简介就改这里） ===== -->
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="师金明 · 个人主页" />
+  <meta property="og:description" content="杭电软件工程大一在读，正在学 C 语言和 AI。点开看看我的自我介绍。" />
+  <meta property="og:image" content="assets/img/avatar.png" />
+  <meta itemprop="name" content="师金明 · 个人主页" />
+  <meta itemprop="description" content="杭电软件工程大一在读，正在学 C 语言和 AI。" />
+  <meta itemprop="image" content="assets/img/avatar.png" />
+
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>" />
+</head>
+<body>
+  <!-- ===== 顶部滚动进度条 ===== -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- ===== 背景装饰（极光光斑 + 网格 + 星点） ===== -->
+  <div class="bg-deco" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="grid-lines"></div>
+    <div class="stars" id="stars"></div>
+  </div>
+
+  <!-- ===== 顶部导航 ===== -->
+  <header class="nav" id="nav">
+    <a class="brand" href="#hero">
+      <span class="brand-mark" data-cfg="brandMark">✧</span>
+      <span class="brand-text" data-cfg="name">你的名字</span>
+    </a>
+
+    <nav class="nav-links" id="navLinks" aria-label="主导航">
+      <a href="#about" data-spy>关于我</a>
+      <a href="#skills" data-spy>技能图谱</a>
+      <a href="#timeline" data-spy>成长轨迹</a>
+      <a href="#projects" data-spy>作品集</a>
+      <a href="#hobbies" data-spy>兴趣星球</a>
+      <a href="#traits" data-spy>性格标签</a>
+      <a href="#quotes" data-spy>座右铭</a>
+      <a href="#contact" data-spy>联系我</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="icon-btn" id="themeToggle" title="切换深色 / 浅色模式" aria-label="切换主题">🌙</button>
+      <button class="icon-btn" id="panelToggle" title="个性化设置" aria-label="打开设置面板">🎨</button>
+      <button class="burger" id="burger" title="菜单" aria-label="移动端菜单">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== ① 首屏 Hero ===== -->
+    <section class="hero section" id="hero">
+      <div class="hero-inner">
+        <div class="hero-text reveal">
+          <p class="hero-hello">
+            <span class="wave">👋</span> <span data-cfg="greeting">你好，很高兴认识你</span>
+            <span class="status-dot" title="当前状态"></span>
+            <span data-cfg="status">【当前状态：开放机会 / 在读 / 在职】</span>
+          </p>
+
+          <h1 class="hero-name">
+            我是 <span class="gradient-text" data-cfg="name">你的名字</span>
+          </h1>
+
+          <p class="hero-typed">
+            <span class="typed-prefix">我是一名</span>
+            <span id="typed" class="typed"></span><span class="caret"></span>
+          </p>
+
+          <p class="hero-tagline" data-cfg="tagline">
+            【一句话介绍自己：用一句话让人记住你——例如「把复杂的事讲简单，把简单的事做漂亮」。】
+          </p>
+
+          <div class="hero-tags" id="heroTags"></div>
+
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#projects">
+              <span>看看我的作品</span> <em>→</em>
+            </a>
+            <a class="btn btn-ghost" href="#contact">联系我</a>
+            <button class="btn btn-ghost" id="copyEmail" data-copy="email">复制邮箱</button>
+          </div>
+
+          <ul class="hero-social" id="heroSocial"></ul>
+        </div>
+
+        <div class="hero-visual reveal">
+          <div class="avatar-ring">
+            <div class="avatar" id="avatar" data-cfg="avatar">
+              <span class="avatar-initial" id="avatarInitial">你</span>
+            </div>
+            <span class="orbit orbit-1">💡</span>
+            <span class="orbit orbit-2">🚀</span>
+            <span class="orbit orbit-3">🎯</span>
+            <span class="orbit orbit-4">☕</span>
+          </div>
+          <div class="hero-card glass">
+            <p class="hero-card-label">现在正在</p>
+            <p class="hero-card-value" data-cfg="nowDoing">【正在做的事：例如「做一个让同事少加班的内部工具」】</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 数据看板 -->
+      <div class="stats glass reveal" id="stats"></div>
+
+      <div class="hero-scroll-hint">
+        <span>向下滚动</span>
+        <i></i>
+      </div>
+    </section>
+
+    <!-- ===== ② 关于我 ===== -->
+    <section class="section" id="about">
+      <div class="section-head reveal">
+        <span class="section-kicker">01 / ABOUT</span>
+        <h2 class="section-title">关于<span class="gradient-text">我</span></h2>
+        <p class="section-sub">三分钟，认识一个立体的我</p>
+      </div>
+
+      <div class="about-grid">
+        <article class="glass card reveal about-story">
+          <h3 class="card-title">📖 我的故事</h3>
+          <div id="aboutParagraphs"></div>
+          <button class="link-btn" id="readMore">展开全文 ↓</button>
+        </article>
+
+        <aside class="glass card reveal about-facts">
+          <h3 class="card-title">🧾 基本信息</h3>
+          <dl class="fact-list" id="factList"></dl>
+        </aside>
+
+        <article class="glass card reveal about-values">
+          <h3 class="card-title">🌟 我的三个关键词</h3>
+          <ul class="value-list" id="valueList"></ul>
+        </article>
+
+        <article class="glass card reveal about-highlight">
+          <h3 class="card-title">🏆 我最有成就感的一件事</h3>
+          <p data-cfg="highlight">【写一件具体的事：背景 → 你做了什么 → 结果数据。有数字的故事最打动。】</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== ③ 技能图谱 ===== -->
+    <section class="section" id="skills">
+      <div class="section-head reveal">
+        <span class="section-kicker">02 / SKILLS</span>
+        <h2 class="section-title">技能<span class="gradient-text">图谱</span></h2>
+        <p class="section-sub">硬技能、软技能、以及我的「工具箱」</p>
+      </div>
+
+      <div class="skills-layout">
+        <div class="glass card reveal">
+          <h3 class="card-title">⚙️ 专业技能</h3>
+          <div class="skill-bars" id="skillBars"></div>
+        </div>
+
+        <div class="skills-side">
+          <div class="glass card reveal">
+            <h3 class="card-title">💬 软技能</h3>
+            <div class="chips" id="softSkills"></div>
+          </div>
+
+          <div class="glass card reveal">
+            <h3 class="card-title">🧰 工具箱</h3>
+            <div class="chips chips-tool" id="toolbox"></div>
+          </div>
+
+          <div class="glass card reveal">
+            <h3 class="card-title">🌐 语言 / 证书</h3>
+            <ul class="cert-list" id="certs"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ④ 成长轨迹 ===== -->
+    <section class="section" id="timeline">
+      <div class="section-head reveal">
+        <span class="section-kicker">03 / JOURNEY</span>
+        <h2 class="section-title">成长<span class="gradient-text">轨迹</span></h2>
+        <p class="section-sub">一步一步，走到今天</p>
+      </div>
+      <ol class="timeline" id="timelineList"></ol>
+    </section>
+
+    <!-- ===== ⑤ 作品集 ===== -->
+    <section class="section" id="projects">
+      <div class="section-head reveal">
+        <span class="section-kicker">04 / WORKS</span>
+        <h2 class="section-title">我的<span class="gradient-text">作品集</span></h2>
+        <p class="section-sub">做过的项目、写过的文章、拿过的奖</p>
+      </div>
+
+      <div class="filters reveal" id="projectFilters"></div>
+      <div class="project-grid" id="projectGrid"></div>
+    </section>
+
+    <!-- ===== ⑥ 兴趣星球 ===== -->
+    <section class="section" id="hobbies">
+      <div class="section-head reveal">
+        <span class="section-kicker">05 / LIFE</span>
+        <h2 class="section-title">兴趣<span class="gradient-text">星球</span></h2>
+        <p class="section-sub">工作之外，我是个什么样的人（鼠标悬停 / 点击翻牌）</p>
+      </div>
+      <div class="hobby-grid" id="hobbyGrid"></div>
+
+      <div class="glass card reveal fun-box">
+        <h3 class="card-title">🎲 三个冷知识</h3>
+        <ul class="fun-list" id="funFacts"></ul>
+      </div>
+    </section>
+
+    <!-- ===== ⑦ 性格标签 ===== -->
+    <section class="section" id="traits">
+      <div class="section-head reveal">
+        <span class="section-kicker">06 / PERSONALITY</span>
+        <h2 class="section-title">性格<span class="gradient-text">标签</span></h2>
+        <p class="section-sub">别人眼中的我，和我眼中的我</p>
+      </div>
+
+      <div class="traits-layout">
+        <div class="glass card reveal mbti-card">
+          <p class="mbti-label">MBTI（可选填写）</p>
+          <p class="mbti-code gradient-text" data-cfg="mbti">XXXX</p>
+          <p class="mbti-desc" data-cfg="mbtiDesc">【用一句话解释你的 MBTI，或者写「我不信这个，但我确实…」】</p>
+          <div class="mbti-axes" id="mbtiAxes"></div>
+        </div>
+        <div class="trait-cloud glass card reveal" id="traitCloud"></div>
+      </div>
+
+      <div class="quote-pair" id="quotePair"></div>
+    </section>
+
+    <!-- ===== ⑧ 座右铭 ===== -->
+    <section class="section" id="quotes">
+      <div class="section-head reveal">
+        <span class="section-kicker">07 / WORDS</span>
+        <h2 class="section-title">我的<span class="gradient-text">座右铭</span></h2>
+        <p class="section-sub">几句话，撑过我很多难熬的时刻</p>
+      </div>
+      <div class="glass quote-box reveal">
+        <div class="quote-mark">“</div>
+        <p class="quote-text" id="quoteText">【一句你真正相信的话】</p>
+        <p class="quote-author" id="quoteAuthor">—— 你的名字</p>
+        <div class="quote-actions">
+          <button class="btn btn-primary btn-sm" id="nextQuote">换一句 ⟳</button>
+          <button class="btn btn-ghost btn-sm" id="copyQuote">复制这句话</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ⑨ 联系方式 ===== -->
+    <section class="section" id="contact">
+      <div class="section-head reveal">
+        <span class="section-kicker">08 / CONTACT</span>
+        <h2 class="section-title">来<span class="gradient-text">聊聊</span>吧</h2>
+        <p class="section-sub">合作、求职、交流、或者只是交个朋友，都欢迎</p>
+      </div>
+
+      <div class="contact-layout">
+        <div class="contact-cards" id="contactCards"></div>
+
+        <form class="glass card contact-form reveal" id="contactForm" novalidate>
+          <h3 class="card-title">✉️ 给我留个言</h3>
+          <p class="form-note">留言不会上传到任何服务器，点击发送会打开你的邮件客户端。</p>
+          <label>你的名字
+            <input type="text" name="from" placeholder="怎么称呼你？" required />
+          </label>
+          <label>你的邮箱（选填）
+            <input type="email" name="email" placeholder="方便我回复你" />
+          </label>
+          <label>想说的话
+            <textarea name="message" rows="4" placeholder="想聊点什么？" required></textarea>
+          </label>
+          <button class="btn btn-primary" type="submit">发送留言 <em>→</em></button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>
+      <span data-cfg="name">你的名字</span> · <span id="footerYear"></span>
+      <span class="dot">·</span> 用 <span class="heart">♥</span> 手写代码构建
+    </p>
+    <p class="footer-sub" id="footerSub">【把这里换成你喜欢的一句话 / 感谢看到最后】</p>
+    <p class="footer-views">你是第 <span id="visitCount">--</span> 位来访者</p>
+  </footer>
+
+  <!-- ===== 个性化设置面板 ===== -->
+  <aside class="panel" id="panel" aria-label="个性化设置">
+    <div class="panel-head">
+      <h3>个性化设置</h3>
+      <button class="icon-btn" id="panelClose" aria-label="关闭设置">✕</button>
+    </div>
+
+    <div class="panel-section">
+      <p class="panel-label">主题模式</p>
+      <div class="seg" id="themeSeg">
+        <button data-theme-val="dark" class="active">深色</button>
+        <button data-theme-val="light">浅色</button>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <p class="panel-label">主色调</p>
+      <div class="swatches" id="swatches"></div>
+    </div>
+
+    <div class="panel-section">
+      <p class="panel-label">字号大小</p>
+      <div class="seg" id="fontSeg">
+        <button data-font="0.92" >小</button>
+        <button data-font="1" class="active">中</button>
+        <button data-font="1.1">大</button>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <p class="panel-label">视觉效果</p>
+      <label class="switch-row">
+        <input type="checkbox" id="animToggle" checked />
+        <span>动画效果</span>
+      </label>
+      <label class="switch-row">
+        <input type="checkbox" id="glowToggle" checked />
+        <span>背景光斑</span>
+      </label>
+    </div>
+
+    <div class="panel-section">
+      <button class="btn btn-ghost btn-sm full" id="resetPrefs">恢复默认</button>
+    </div>
+    <p class="panel-tip">设置会自动保存在你的浏览器里。</p>
+  </aside>
+  <div class="panel-mask" id="panelMask"></div>
+
+  <!-- ===== 右下角悬浮按钮 ===== -->
+  <div class="fab-wrap">
+    <button class="fab" id="toTop" title="回到顶部" aria-label="回到顶部">↑</button>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
